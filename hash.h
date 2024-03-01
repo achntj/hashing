@@ -25,8 +25,8 @@ private:
 public:
   HashMap(int k);
   ~HashMap();
-  int hash_function(string text, int current, int ideal);
-  void insert(string text, int current, int ideal);
+  int hash_function(string text, int k);
+  void insert(string text, int k);
   void printFirst5Slots();
   void printSlotLengths();
   float calculateStandardDeviation();

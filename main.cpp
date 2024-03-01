@@ -2,7 +2,7 @@
 CSE 310 Hash Function DIY Contest
 Instructor: Yiran "Lawrence" Luo
 Your name(s): Achintya Jha, Ritwik Aggarwal
-Your team alias: AR
+Your team alias: CoderCoder
 */
 
 #include "hash.h"
@@ -43,13 +43,14 @@ int main() {
   // Your time to shine starts now
 
   // sorting so that all words are always in the same order.
-  std::sort(std::begin(texts), std::end(texts));
+  // std::sort(std::begin(texts), std::end(texts));
 
   // for (int i = 0; i < sizeof(texts) / sizeof(texts[0]); i++) {
-  //     if (texts[i]) {
-  //   cout << texts[i] << endl;
-  //     }
-  // }
+  //   if (texts[i].size() != 0) {
+  //
+  //     cout << texts[i] << endl;
+  //   }
+  // };
 
   // int offset = (int)tolower(texts[0][0]);
 
@@ -59,13 +60,11 @@ int main() {
 
   HashMap hashMap(k);
 
-  int ideal = n / k;
-
-  cout << "ideal: " << ideal << endl;
-
   // Insert tokens into the hash table
   for (int i = 0; i < n; ++i) {
-    hashMap.insert(texts[i], i, ideal);
+    if (texts[i].size() != 0) {
+      hashMap.insert(texts[i], k);
+    }
   }
 
   cout << "==== Printing the contents of the first 5 slots ====" << endl;

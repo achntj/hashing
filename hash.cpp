@@ -5,7 +5,7 @@
 using namespace std;
 
 HashMap::HashMap(int k) {
-  size = k;
+  this->size = k;
   // array of pointers
   map = new Node *[size];
   for (int i = 0; i < size; ++i) {
@@ -25,15 +25,16 @@ HashMap::~HashMap() {
   delete[] map;
 }
 
-int HashMap::hash_function(string text, int current, int ideal) {
-  // Implement your own hash function here
-  // cout << (int)tolower(text[0]) << " " << offset << endl;
-  // return ((int)tolower(text[0]) - offset) % k;
-  return current / ideal;
+int HashMap::hash_function(string text, int k) {
+  int hashValue = 0;
+  for (int i = 0; i < text.size(); ++i) {
+    hashValue += static_cast<int>(text[i]) * static_cast<int>(text[i]);
+  }
+  return hashValue % k;
 }
 
-void HashMap::insert(string text, int current, int ideal) {
-  int index = hash_function(text, current, ideal);
+void HashMap::insert(string text, int k) {
+  int index = hash_function(text, k);
   Node *newNode = new Node(text, nullptr);
 
   if (map[index] == nullptr) {
